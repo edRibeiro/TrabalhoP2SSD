@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/08/2017 09:48:43 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Inventario" table="inventario" catalog="locadora" optimistic-lock="version">
+        <id name="inventarioId" type="java.lang.Integer">
+            <column name="inventario_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="filme" class="model.Filme" fetch="select">
+            <column name="filme_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="loja" class="model.Loja" fetch="select">
+            <column name="loja_id" not-null="true" />
+        </many-to-one>
+        <property name="ultimaAtualizacao" type="timestamp">
+            <column name="ultima_atualizacao" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

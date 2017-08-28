@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/08/2017 09:48:43 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.FilmeCategoria" table="filme_categoria" catalog="locadora" optimistic-lock="version">
+        <composite-id name="id" class="model.FilmeCategoriaId">
+            <key-property name="filmeId" type="short">
+                <column name="filme_id" />
+            </key-property>
+            <key-property name="categoriaId" type="byte">
+                <column name="categoria_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="categoria" class="model.Categoria" update="false" insert="false" fetch="select">
+            <column name="categoria_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="filme" class="model.Filme" update="false" insert="false" fetch="select">
+            <column name="filme_id" not-null="true" />
+        </many-to-one>
+        <property name="ultimaAtualizacao" type="timestamp">
+            <column name="ultima_atualizacao" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

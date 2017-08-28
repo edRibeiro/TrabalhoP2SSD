@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28/08/2017 09:48:43 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Loja" table="loja" catalog="locadora" optimistic-lock="version">
+        <id name="lojaId" type="java.lang.Byte">
+            <column name="loja_id" />
+            <generator class="identity" />
+        </id>
+        <property name="gerenteId" type="byte">
+            <column name="gerente_id" not-null="true" unique="true" />
+        </property>
+        <property name="enderecoId" type="short">
+            <column name="endereco_id" not-null="true" />
+        </property>
+        <property name="ultimaAtualizacao" type="timestamp">
+            <column name="ultima_atualizacao" length="19" not-null="true" />
+        </property>
+        <set name="inventarios" table="inventario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="loja_id" not-null="true" />
+            </key>
+            <one-to-many class="model.Inventario" />
+        </set>
+        <set name="funcionarios" table="funcionario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="loja_id" not-null="true" />
+            </key>
+            <one-to-many class="model.Funcionario" />
+        </set>
+    </class>
+</hibernate-mapping>
