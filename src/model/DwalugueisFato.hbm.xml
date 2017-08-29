@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/08/2017 01:55:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.DwalugueisFato" table="dwalugueis_fato" catalog="dw_ssd" optimistic-lock="version">
+        <id name="idAlugueis" type="int">
+            <column name="id_alugueis" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="dwcliente" class="model.Dwcliente" fetch="select">
+            <column name="id_cliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dwfilmeCategoria" class="model.DwfilmeCategoria" fetch="select">
+            <column name="id_filme_categoria" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dwloja" class="model.Dwloja" fetch="select">
+            <column name="id_loja" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dwtempo" class="model.Dwtempo" fetch="select">
+            <column name="id_tempo" not-null="true" />
+        </many-to-one>
+        <property name="quantidade" type="java.lang.Integer">
+            <column name="quantidade" />
+        </property>
+        <property name="valor" type="java.lang.Float">
+            <column name="valor" precision="12" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/08/2017 01:55:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.DwfilmeCategoria" table="dwfilme_categoria" catalog="dw_ssd" optimistic-lock="version">
+        <id name="idFilmeCategoria" type="int">
+            <column name="id_filme_categoria" />
+            <generator class="assigned" />
+        </id>
+        <property name="categoria" type="string">
+            <column name="categoria" length="80" />
+        </property>
+        <set name="dwalugueisFatos" table="dwalugueis_fato" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_filme_categoria" not-null="true" />
+            </key>
+            <one-to-many class="model.DwalugueisFato" />
+        </set>
+    </class>
+</hibernate-mapping>

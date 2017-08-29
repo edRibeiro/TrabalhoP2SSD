@@ -102,4 +102,82 @@ public class DwDao {
             Logger.getLogger(DwDao.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+    
+    public static void carregarTempo(){
+        try {
+            Connection connDW = ConnectionFactory.getConnection("dw_ssd", "root", "");
+            Connection connLOCADORA  = ConnectionFactory.getConnection("locadora", "root", "");
+            
+            
+            String buscar = "select distinct DATE_FORMAT(a.data_de_devolucao, '%W') as dia_semana, MONTHNAME(a.data_de_devolucao) as mes, QUARTER(a.data_de_devolucao) as quadrimestre from aluguel a";
+            String incluir = "insert into dwtempo(dia_semana, mes, quadrimestre) values (?, ?, ?)";
+            PreparedStatement stmt = connLOCADORA.prepareStatement(buscar);
+            PreparedStatement stmtDW = connDW.prepareStatement(incluir);
+            ResultSet rs = stmt.executeQuery();
+            //int count = 
+            while (rs.next()) {
+                System.out.println(rs.getRow());
+                stmtDW.setString(1, rs.getString("dia_semana"));
+                stmtDW.setString(2, rs.getString("mes"));  
+                stmtDW.setString(3, String.valueOf(rs.getInt("quadrimestre"))+"º");
+                int executeUpdate = stmtDW.executeUpdate();
+            }
+            rs.close();
+            stmt.close();
+            stmtDW.close();
+            connDW.close();
+            connLOCADORA.close();    
+            
+        } catch (SQLException e) {
+            Logger.getLogger(DwDao.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    
+    public static void carregarAluguel(){
+        try {
+            Connection connDW = ConnectionFactory.getConnection("dw_ssd", "root", "");
+            Connection connLOCADORA  = ConnectionFactory.getConnection("locadora", "root", "");
+            
+            
+            String buscar = "select distinct DATE_FORMAT(a.data_de_devolucao, '%W') as dia_semana, MONTHNAME(a.data_de_devolucao) as mes, QUARTER(a.data_de_devolucao) as quadrimestre from aluguel a";
+            String incluir = "insert into dwtempo(dia_semana, mes, quadrimestre) values (?, ?, ?)";
+            PreparedStatement stmt = connLOCADORA.prepareStatement(buscar);
+            PreparedStatement stmtDW = connDW.prepareStatement(incluir);
+            ResultSet rs = stmt.executeQuery();
+            //int count = 
+            while (rs.next()) {
+                System.out.println(rs.getRow());
+                stmtDW.setString(1, rs.getString("dia_semana"));
+                stmtDW.setString(2, rs.getString("mes"));  
+                stmtDW.setString(3, String.valueOf(rs.getInt("quadrimestre"))+"º");
+                int executeUpdate = stmtDW.executeUpdate();
+            }
+            rs.close();
+            stmt.close();
+            stmtDW.close();
+            connDW.close();
+            connLOCADORA.close();    
+            
+        } catch (SQLException e) {
+            Logger.getLogger(DwDao.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    
+     public static int buscaIdTempo(String w, String m){
+         try {
+             Connection connDW = ConnectionFactory.getConnection("dw_ssd", "root", "");
+             String sql = "SELECT id_tempo FROM dwtempo where dia_semana like '"+w+"' and mes like '"+m+"'";
+             PreparedStatement stmtDW = connDW.prepareStatement(sql);
+             ResultSet rs = stmtDW.executeQuery();
+             if(rs.next()) {
+                System.out.println(rs.getRow());
+                return rs.getInt("id_tempo");
+            }
+             
+         } catch (SQLException e) {
+             Logger.getLogger(DwDao.class.getName()).log(Level.SEVERE, null, e);
+         }
+         
+        return 0;                  
+     }
 }

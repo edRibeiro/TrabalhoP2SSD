@@ -41,9 +41,9 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="dw_ssd"/>
-  <table-filter match-name="dwtempo"/>
-  <table-filter match-name="dwcliente"/>
   <table-filter match-name="dwalugueis_fato"/>
   <table-filter match-name="dwfilme_categoria"/>
+  <table-filter match-name="dwtempo"/>
+  <table-filter match-name="dwcliente"/>
   <table-filter match-name="dwloja"/>
 </hibernate-reverse-engineering>

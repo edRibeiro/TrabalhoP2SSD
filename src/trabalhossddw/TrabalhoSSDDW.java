@@ -7,7 +7,7 @@ package trabalhossddw;
 
 import java.util.List;
 import javax.swing.JOptionPane;
-import model.Cliente;
+import model.Dwcliente;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import util.HibernateUtil;
@@ -18,7 +18,7 @@ import util.HibernateUtil;
  */
 public class TrabalhoSSDDW {
 
-    static List<Cliente> lista;
+    static List<Dwcliente> lista;
 
     /**
      * @param args the command line arguments
@@ -28,6 +28,7 @@ public class TrabalhoSSDDW {
         //dwdao.DwDao.carregarFilmes();
         //dwdao.DwDao.carregarLOJA();
         // TODO code application logic here
+        //dwdao.DwDao.carregarTempo();
         //listar();
 //        Random r = new Random();
         String[] escolaridade = {
@@ -69,7 +70,7 @@ public class TrabalhoSSDDW {
         }
     }
 
-    private static void upadate(Cliente c) {
+    private static void upadate(Dwcliente c) {
         try {
             Session s = HibernateUtil.getSessionFactory().getCurrentSession();
 

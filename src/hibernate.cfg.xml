@@ -43,24 +43,13 @@ Contributor(s):
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/locadora</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dw_ssd?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.current_session_context_class">thread</property>
-    <mapping resource="model/Ator.hbm.xml"/>
-    <mapping resource="model/Categoria.hbm.xml"/>
-    <mapping resource="model/Aluguel.hbm.xml"/>
-    <mapping resource="model/Pagamento.hbm.xml"/>
-    <mapping resource="model/Inventario.hbm.xml"/>
-    <mapping resource="model/Loja.hbm.xml"/>
-    <mapping resource="model/Idioma.hbm.xml"/>
-    <mapping resource="model/Filme.hbm.xml"/>
-    <mapping resource="model/FilmeTexto.hbm.xml"/>
-    <mapping resource="model/FilmeCategoria.hbm.xml"/>
-    <mapping resource="model/Cliente.hbm.xml"/>
-    <mapping resource="model/Funcionario.hbm.xml"/>
-    <mapping resource="model/Endereco.hbm.xml"/>
-    <mapping resource="model/Estados.hbm.xml"/>
-    <mapping resource="model/Cidade.hbm.xml"/>
-    <mapping resource="model/FilmeAtor.hbm.xml"/>
+    <mapping resource="model/DwalugueisFato.hbm.xml"/>
+    <mapping resource="model/Dwcliente.hbm.xml"/>
+    <mapping resource="model/Dwloja.hbm.xml"/>
+    <mapping resource="model/Dwtempo.hbm.xml"/>
+    <mapping resource="model/DwfilmeCategoria.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/08/2017 01:55:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Dwcliente" table="dwcliente" catalog="dw_ssd" optimistic-lock="version">
+        <id name="idCliente" type="int">
+            <column name="id_cliente" />
+            <generator class="assigned" />
+        </id>
+        <property name="cidade" type="string">
+            <column name="cidade" length="80" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="2" />
+        </property>
+        <property name="genero" type="string">
+            <column name="genero" length="1" />
+        </property>
+        <property name="rendaAnual" type="big_decimal">
+            <column name="renda_anual" precision="10" />
+        </property>
+        <property name="escolaridade" type="string">
+            <column name="escolaridade" length="50" />
+        </property>
+        <set name="dwalugueisFatos" table="dwalugueis_fato" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_cliente" not-null="true" />
+            </key>
+            <one-to-many class="model.DwalugueisFato" />
+        </set>
+    </class>
+</hibernate-mapping>

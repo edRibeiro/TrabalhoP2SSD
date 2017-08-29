@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/08/2017 01:55:11 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Dwtempo" table="dwtempo" catalog="dw_ssd" optimistic-lock="version">
+        <id name="idTempo" type="java.lang.Integer">
+            <column name="id_tempo" />
+            <generator class="identity" />
+        </id>
+        <property name="diaSemana" type="string">
+            <column name="dia_semana" length="15" />
+        </property>
+        <property name="mes" type="string">
+            <column name="mes" length="15" />
+        </property>
+        <property name="quadrimestre" type="string">
+            <column name="quadrimestre" length="2" />
+        </property>
+        <set name="dwalugueisFatos" table="dwalugueis_fato" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_tempo" not-null="true" />
+            </key>
+            <one-to-many class="model.DwalugueisFato" />
+        </set>
+    </class>
+</hibernate-mapping>
