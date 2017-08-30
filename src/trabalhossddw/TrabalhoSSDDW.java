@@ -5,6 +5,7 @@
  */
 package trabalhossddw;
 
+import static dwdao.DwDao.carregarAluguel;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.Dwcliente;
@@ -31,7 +32,8 @@ public class TrabalhoSSDDW {
         //dwdao.DwDao.carregarTempo();
         //listar();
 //        Random r = new Random();
-        String[] escolaridade = {
+        //carregarAluguel();
+        /*String[] escolaridade = {
             "Fundamental - Incompleto",
             "Fundamental - Completo",
             "Médio - Incompleto",
@@ -43,7 +45,7 @@ public class TrabalhoSSDDW {
             "Mestrado - Incompleto",
             "Mestrado - Completo",
             "Doutorado - Incompleto",
-            "Doutorado - Completo"};
+            "Doutorado - Completo"};*/
        // for (Cliente c : lista) {
 //            Double renda = 1.0f+(r.nextDouble()*20)*10000;
 //            c.setRenda(BigDecimal.valueOf(renda));
@@ -55,7 +57,7 @@ public class TrabalhoSSDDW {
         //JOptionPane.showMessageDialog(null, "Clientes alterados na base de Dados!");
     }
 
-    private static void listar() {
+   /* private static void listar() {
         try {
             Session s = HibernateUtil.getSessionFactory().getCurrentSession();
 
@@ -83,5 +85,5 @@ public class TrabalhoSSDDW {
         } catch (HibernateException e) {
             JOptionPane.showMessageDialog(null, "Cliente não pode ser alterado na base de Dados!\n Error:" + e.toString());
         }
-    }
+    }*/
 }
